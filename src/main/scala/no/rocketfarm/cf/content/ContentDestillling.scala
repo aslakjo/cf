@@ -11,7 +11,7 @@ import java.io.BufferedWriter
 import java.io.StringWriter
 import scala.xml.Node
 
-trait ContentDestiller {
+trait ContentDestilling {
 	val appHeaderClass = "app-header"
 	val appContentClass = "app-content"
   

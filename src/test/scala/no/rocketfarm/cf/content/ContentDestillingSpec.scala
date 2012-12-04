@@ -5,7 +5,7 @@ import org.scalatest.matchers.ShouldMatchers
 class ContentDestillerSpec extends FlatSpec with ShouldMatchers {
 
   "ContentDestiller" should "take guly html and make it to header" in {
-    val contentDestiller = new Object with ContentDestiller
+    val contentDestiller = new Object with ContentDestilling
     val parsedContent = contentDestiller.parse(html)
     
     parsedContent("title") should be ("Info")

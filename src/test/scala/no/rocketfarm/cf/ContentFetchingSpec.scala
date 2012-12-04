@@ -2,7 +2,7 @@ package no.rocketfarm.cf
 import org.scalatest.matchers.ShouldMatchers
 import org.scalatest.FlatSpec
 
-class ContentFetcherSpec extends FlatSpec with ShouldMatchers{
+class ContentFetchingSpec extends FlatSpec with ShouldMatchers{
 	object TestFetcher extends ContentFetching{
 	  override val appContentClass = "page-content"
 	  override val appHeaderClass = "page-header"

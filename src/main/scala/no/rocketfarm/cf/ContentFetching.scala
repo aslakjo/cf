@@ -1,8 +1,8 @@
 package no.rocketfarm.cf
 import no.rocketfarm.cf.fetcher.TextFetcher
-import content.ContentDestiller
+import content.ContentDestilling
 
-trait ContentFetching extends ContentDestiller with TextFetcher {
+trait ContentFetching extends ContentDestilling with TextFetcher {
 	def get(url:String):Content= {
 	  val text = fetch(url)
 	  val values = parse(text)
@@ -13,4 +13,3 @@ trait ContentFetching extends ContentDestiller with TextFetcher {
 
 object ContentFetcher extends ContentFetching
 
-case class Content(title: String, body:String)

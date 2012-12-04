@@ -26,8 +26,9 @@ trait ContentDestiller {
 	  val headers = filterOutHeaders(divs)
 	  val content = filterOutContent(divs)
 	  
+	  val contentNodes = content.headOption.map( _.child ).getOrElse(Nil)
 
-	  Map(("title" -> (headers \\ "h1" text)), ("content" -> content.head.child.mkString.trim.replace("&amp;", "&")))
+	  Map(("title" -> (headers \\ "h1" text)), ("content" -> contentNodes.mkString.trim.replace("&amp;", "&")))
 	}
 	
 	

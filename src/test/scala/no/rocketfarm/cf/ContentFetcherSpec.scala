@@ -13,4 +13,11 @@ class ContentFetcherSpec extends FlatSpec with ShouldMatchers{
 		content.title should be ("Info")
 		content.body should startWith ("<p>Fjellsportfestivalen er ein årleg festival som arrangerast av Bratt Moro AS")
 	}
+	
+	it should "return empty fields if format is wrong" in {
+	  val content = TestFetcher.get("https://www.google.no/")
+	  
+	  content.title should be ("") 
+	  content.body should be ("")
+	} 
 }

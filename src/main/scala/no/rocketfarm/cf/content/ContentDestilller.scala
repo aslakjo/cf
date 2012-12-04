@@ -16,11 +16,10 @@ trait ContentDestiller {
 	val appContentClass = "app-content"
   
 	def parse(html:String):Map[String, String] ={
-	  val source = new InputSource()
-	  source.setByteStream(new ByteArrayInputStream(html.getBytes()))
-	  source.setEncoding("UTF-8")
+	  val escapedEntities = html.replace("&", "&amp;")
 	  
-	  val xml = new HTML5Parser().loadXML(source)
+	  val parser = new HTML5Parser()
+	  val xml = parser.load(new StringReader(escapedEntities))
 	
 	  val divs = (xml \\ "div")
 	  
@@ -28,16 +27,9 @@ trait ContentDestiller {
 	  val content = filterOutContent(divs)
 	  
 
-	  val writer = writeToString(content.head)
-	  Map(("title" -> (headers \\ "h1" text)), ("content" -> writer.toString.trim))
+	  Map(("title" -> (headers \\ "h1" text)), ("content" -> content.head.child.mkString.trim.replace("&amp;", "&")))
 	}
 	
-	protected def writeToString(node : Node) = {
-  	    val writer=new BufferedWriter(new StringWriter) 
-		XML.write(writer, node, "UTF-8", true, null) 
-		writer.close() 
-		writer
-	}
 	
 	protected def filterOutContent(divs:NodeSeq)={
 	  filterOut(appContentClass, divs)
@@ -51,7 +43,6 @@ trait ContentDestiller {
 	  divs.map{node =>{
 	    val css = node \ "@class"
 		val cssClasses = css.text.split(" ").toList
-		println(cssClasses)
 	    if(cssClasses.contains(cssClass)){
 	      node
 	    }else 

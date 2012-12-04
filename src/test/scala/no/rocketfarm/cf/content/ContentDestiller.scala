@@ -9,7 +9,7 @@ class ContentDestillerSpec extends FlatSpec with ShouldMatchers {
     val parsedContent = contentDestiller.parse(html)
     
     parsedContent("title") should be ("Info")
-    parsedContent("content") should be("""<p>Fjellsportfestivalen er ein årleg festival som arrangerast av Bratt Moro AS. Staden er Sogndal; bygda som dei siste åra har blitt utropt til Fjellsporthovudstaden i Noreg, og det er ikkje utan grunn! Med sine bratte fjell, djupe dalar, nydelige fjordar og snø-rike vintrar er Sogndal den ultimate plassen å drive fjellsport. -Året rundt!</p>
+    parsedContent("content") should be ("""<p>Fjellsportfestivalen er ein årleg festival som arrangerast av Bratt Moro AS. Staden er Sogndal; bygda som dei siste åra har blitt utropt til Fjellsporthovudstaden i Noreg, og det er ikkje utan grunn! Med sine bratte fjell, djupe dalar, nydelige fjordar og snø-rike vintrar er Sogndal den ultimate plassen å drive fjellsport. -Året rundt!</p>
 <p>Fjellsportfestivalen vert i 2013 arrangert for 5.gong. Og gjennom desse åra har me vorte <strong><em>tøffare, brattare og friare</em></strong>!</p>
 <p>&nbsp;</p>
 <p>Dersom du har lyst til å melde deg som frivillig kan du ta kontakt med vår mann Magnus Aasheim på aasheimmagnus@gmail.com. Magnus er verdens hyggeligste frivillig-koordinator, og hjelper deg med det du måtte lure på!</p>
